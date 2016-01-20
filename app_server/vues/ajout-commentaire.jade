@@ -6,7 +6,7 @@ block content
 			h1= headerDeLaPage.titre
 	.row
 		.col-xs-12.col-md-6
-			form.form-horizontal(action="", method="post", role="form", id="ajoutCommentaire")
+			form.form-horizontal(action="#{url}", method="post", role="form", id="ajoutCommentaire")
 				- if (erreur == "val")
 					.alert.alert-danger(role="alert") Tous les champs sont requis, veuillez essayer de nouveau.
 				.form-group

@@ -1,5 +1,6 @@
 $('#ajoutCommentaire').submit(function (e) {
 	$('.alert.alert-danger').hide();
+	tinyMCE.triggerSave();
 	if (!$('input#nom').val() || !$('select#note').val() || !$('textarea#texte').val()) {
 
 		if ($('.alert.alert-danger').length) {

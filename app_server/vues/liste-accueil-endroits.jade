@@ -8,9 +8,12 @@ block content
 					small &nbsp;#{headerDeLaPage.tagLine}
 	.row
 		.col-xs-12.col-sm-8(ng-controller="listingAccueilEndroitsCtrl")
+			label(for="filtre") &nbsp; Resultat filtré
+			input#filtre(type="text", name="filtre", ng-model="texteFiltre")
 			.error {{ message }}
+			.spinner {{ message }}
 			.row.list-group
-					.col-xs-12.list-group-item(ng-repeat="endroit in data.endroits")
+					.col-xs-12.list-group-item(ng-repeat="endroit in data.endroits | filter: texteFiltre")
 						h4
 							a(href="/endroits/{{endroit._id}}") {{endroit.nom}}
 							small(note-etoilees, note="endroit.note")

@@ -71,7 +71,7 @@ var construireLaListeDesEndroits = function(req, res, results, stats) {
 	results.forEach(function(doc) {
 
 		endroits.push({
-			distance: doc.dis,
+			distance: doc.dis/1000,
 			nom: doc.obj.nom,
 			adresse: doc.obj.adresse,
 			note: doc.obj.note,

@@ -178,8 +178,9 @@ var renderAjouterCommentaire = function (req, res, jeSuisLeCallbackContenantLesI
 	res.render('ajout-commentaire', {
 		titre: 'Commentaire ' + jeSuisLeCallbackContenantLesInfosEndroits.nom + ' sur laPlace',
 		headerDeLaPage: { titre: 'Ajouter un commentaire sur ' + jeSuisLeCallbackContenantLesInfosEndroits.nom },
-		erreur: req.query.erreur
-	});
+		erreur: req.query.erreur,
+		url: req.originalUrl
+			});
 };
 //---------------------------------------------------------------
 /*             ------------------------------------            */
