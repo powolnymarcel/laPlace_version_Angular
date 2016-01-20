@@ -7,21 +7,18 @@ block content
 				h1= headerDeLaPage.titre
 					small &nbsp;#{headerDeLaPage.tagLine}
 	.row
-		.col-xs-12.col-sm-8
-			.error= message
+		.col-xs-12.col-sm-8(ng-controller="listingAccueilEndroitsCtrl")
+			.error {{ message }}
 			.row.list-group
-				each endroit in endroits
-					.col-xs-12.list-group-item
+					.col-xs-12.list-group-item(ng-repeat="endroit in data.endroits")
 						h4
-							a(href="/endroits/#{endroit._id}")= endroit.nom
-							small &nbsp;
-								+montrerNote(endroit.note)
-							span.badge.pull-right.badge-default= endroit.distance
-						p.address= endroit.adresse
-						a.pull-right(href="/endroits/editer/#{endroit._id}") Editer
+							a(href="/endroits/{{endroit._id}}") {{endroit.nom}}
+							small(note-etoilees, note="endroit.note")
+							span.badge.pull-right.badge-default {{endroit.distance | formatDistance}}
+						p.address {{endroit.adresse}}
+						a.pull-right(href="/endroits/editer/{{endroit._id}}") Editer
 						p
-							each service in endroit.services
-								span.label.label-warning= service
-								| &nbsp;
+							span.label.label-warning.label-facility(ng-repeat="service in endroit.services")
+								| {{service}} &nbsp;
 		.col-xs-12.col-sm-4
 			p.lead= sidebar

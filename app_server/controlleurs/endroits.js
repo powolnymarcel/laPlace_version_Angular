@@ -77,68 +77,19 @@ if (process.env.NODE_ENV === 'production') {
 //---------------------------------------------------------------
 /* Render pour la page d'accueil                               */
 //---------------------------------------------------------------
-/* GET pour la page d'accueil */
-//Va faire un appel GET sur le routeur de l'api, le routeur de l'api va donc recevoir : GET /api/endroits
-//Pour le routeur cela signifie qu'il faut aller dans le Ctrl "ctrlEndroits" et lancer "endroitsListeParDistance"
+
 module.exports.listingAccueilEndroits = function(req, res){
-	var requestOptions, path;
-	path = '/api/endroits';
-	requestOptions = {
-		url : apiOptions.server + path,
-		method : "GET",
-		json : {},
-		qs : {
-			lng : 5.723485,
-			lat : 50.627192,
-			maxDistance : 2000000
-		}
-	};
-	request(
-		requestOptions,
-		function(err, response, body) {
-			var i, data;
-			data = body;
-				for (i=0; i<data.length; i++) {
-					data[i].distance = _formatDistance(data[i].distance);
-				}
-				renderDeLaPageAccueil(req, res,body);
-			}
-	);
-	var _formatDistance = function (distance) {
-		var numDistance, unit;
-		if (distance > 1000) {
-			numDistance = parseFloat(distance / 1000).toFixed(1);
-			unit = 'km';
-		} else {
-			numDistance = parseInt(distance, 10);
-			unit = 'm';
-		}
-		return numDistance + unit;
-	};
-};
+				renderDeLaPageAccueil(req, res);
+		};
 /* RENDER  pour la page d'accueil */
-var renderDeLaPageAccueil = function(req, res,responseBody){
-	var message;
-	//Si la réponse est différente d'un array
-	if (!(responseBody instanceof Array)) {
-		message = "Erreur lors de la verif sur l'API";
-		//Pourquoi un array vide ? Si la vue reçoit à la place un STRING elle va peter un cable :p, il est tard...
-		responseBody = [];
-	} else {
-		//Si pas d'endroits trouvé
-		if (!responseBody.length) {
-			message = "Aucuns endroits trouves...";
-		}
-	}
+var renderDeLaPageAccueil = function(req, res){
 	res.render('liste-accueil-endroits', {
 		titre: 'laPlace, trouver des commerces proche de chez vous.',
 		headerDeLaPage: {
 			titre: 'laPlace',
 			tagLine: 'Trouver des commerces proche de chez vous.'
 		},
-		sidebar: "La distance est calculée à partir d'un point donné sur Soumagne",
-		endroits: responseBody,
-		message: message
+		sidebar: "La distance est calculée à partir d'un point donné sur Soumagne"
 	});
 };
 //---------------------------------------------------------------
