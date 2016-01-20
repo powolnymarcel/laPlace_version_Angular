@@ -12,7 +12,7 @@ DEMO : <a href="https://sleepy-waters-7506.herokuapp.com/"> DEMO ICI</a>
 1. npm install
 2. node serveur.js ou nodemon
 
-<h2>Laplace, listing commerces de proximité avec commentaires</h2>
+<h2>Laplace en version ANGULARJS, listing commerces de proximité avec commentaires</h2>
 <p>TODO: ameliorer backend</p>
 <p>TODO: authentification</p>
 
