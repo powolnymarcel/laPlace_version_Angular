@@ -1,0 +1,27 @@
+extends layout
+include _includes/fonctionsHTMLpartagee
+block content
+	#banner.page-header
+		.row
+			.col-lg-7
+				h1= headerDeLaPage.titre
+					small &nbsp;#{headerDeLaPage.tagLine}
+	.row
+		.col-xs-12.col-sm-8
+			.error= message
+			.row.list-group
+				each endroit in endroits
+					.col-xs-12.list-group-item
+						h4
+							a(href="/endroits/#{endroit._id}")= endroit.nom
+							small &nbsp;
+								+montrerNote(endroit.note)
+							span.badge.pull-right.badge-default= endroit.distance
+						p.address= endroit.adresse
+						a.pull-right(href="/endroits/editer/#{endroit._id}") Editer
+						p
+							each service in endroit.services
+								span.label.label-warning= service
+								| &nbsp;
+		.col-xs-12.col-sm-4
+			p.lead= sidebar

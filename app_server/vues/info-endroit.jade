@@ -1,0 +1,63 @@
+extends layout
+
+//le include de la mixin pour afficher les etoiles(rating)
+include _includes/fonctionsHTMLpartagee
+
+block content
+	.row.page-header: .col-lg-12
+		h1= headerDeLaPage.titre
+	.row
+		.col-xs-12.col-md-9
+			.row
+				.col-xs-12.col-sm-6
+					p.rating
+						+montrerNote(endroit.note)
+					p= endroit.adresse
+					.panel.panel-primary
+						.panel-heading
+							h2.panel-title Heures d'ouverture
+						.panel-body
+							each temps in endroit.heuresOuverture
+								p
+									| #{temps.jours} :
+									if temps.ferme
+										| Fermé
+									else
+										| #{temps.ouverture} - #{temps.fermeture}
+					.panel.panel-primary
+						.panel-heading
+							h2.panel-title Services
+						.panel-body
+							each service in endroit.services
+								span.label.label-warning
+									span.glyphicon.glyphicon-ok
+									| &nbsp;#{service}
+								| &nbsp;
+				.col-xs-12.col-sm-6.location-map
+					.panel.panel-primary
+						.panel-heading
+							h2.panel-title Localisation sur carte
+						.panel-body
+							img.img-responsive.img-rounded(src="http://maps.googleapis.com/maps/api/staticmap?center=#{endroit.coords.lat},#{endroit.coords.lng}&zoom=17&size=400x350&sensor=false&markers=#{endroit.coords.lat},#{endroit.coords.lng}&scale=2")
+			.row
+				.col-xs-12
+					.panel.panel-primary.review-panel
+						.panel-heading
+							a.btn.btn-default.pull-right(href="/endroits/#{endroit._id}/commentaires/nouveau") Ajouter un commentaire
+							h2.panel-title Commentaires clients
+						.panel-body.review-container
+							each commentaire in endroit.commentaires
+								.row
+									.review
+										.well.well-sm.review-header
+											span.rating
+												//appel de la MIXIN, elle prend en param la note laissée par l'user
+												+montrerNote(commentaire.note)
+											span.reviewAuthor #{commentaire.auteur}
+											small.reviewTimestamp
+												+formatDate(commentaire.temps)
+										.col-xs-12
+											p !{(commentaire.texte).replace(/\n/g, '<br/>')}
+		.col-xs-12.col-md-3
+			p.lead #{endroit.nom} #{sidebar.texte}
+			p= sidebar.tagline

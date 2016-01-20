@@ -1,0 +1,32 @@
+extends layout
+
+block content
+	.row.page-header
+		.col-lg-12
+			h1= headerDeLaPage.titre
+	.row
+		.col-xs-12.col-md-6
+			form.form-horizontal(action="", method="post", role="form", id="ajoutCommentaire")
+				- if (erreur == "val")
+					.alert.alert-danger(role="alert") Tous les champs sont requis, veuillez essayer de nouveau.
+				.form-group
+					label.col-xs-10.col-sm-3.control-label(for="nom") Nom
+					.col-xs-12.col-sm-9
+						input#nom.form-control(name="nom")
+				.form-group
+					label.col-xs-10.col-sm-3.control-label(for="note") Note
+					.col-xs-12.col-sm-2
+						select#note.input-sm(name="note")
+							option
+							option 5
+							option 4
+							option 3
+							option 2
+							option 1
+				.form-group
+					label.col-sm-3.control-label(for="texte") Commentaire
+					.col-sm-9
+						textarea#texte.form-control(name="texte", rows="5")
+				button.btn.btn-default.pull-right Ajouter mon commentaire
+		.col-xs-12.col-md-4
+

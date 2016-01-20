@@ -1,0 +1,66 @@
+
+extends layout
+
+block content
+	#banner.page-header
+		.row
+			.col-md-6.col-sm-12
+	.row
+		.col-md-6.col-sm-12
+			form.form-horizontal(action="/endroits/editer/#{endroits._id}/fin", method="post", role="form")
+				.form-group
+					label.col-xs-10.col-sm-2.control-label(for="nom") Nom
+					.col-xs-12.col-sm-10
+						input#nom.form-control(name="nom", value="#{endroits.nom}")
+				.form-group
+					label.col-xs-10.col-sm-2.control-label(for="adresse") adresse
+					.col-xs-12.col-sm-10
+						input#adresse.form-control(name="adresse",  value="#{endroits.adresse}")
+				.form-group
+					label.col-xs-10.col-sm-2.control-label(for="services") services
+					.col-xs-12.col-sm-10
+						input#services.form-control(name="services",  value="#{endroits.services}")
+				.form-group
+					label.col-xs-10.col-sm-2.control-label(for="lng") lng
+					.col-xs-12.col-sm-10
+						input#lng.form-control(name="lng",  value="#{endroits.coords[0]}")
+				.form-group
+					label.col-xs-10.col-sm-2.control-label(for="lat") lat
+					.col-xs-12.col-sm-10
+						input#lat.form-control(name="lat",  value="#{endroits.coords[1]}")
+				.form-group
+					label.col-xs-10.col-sm-2.control-label(for="jours1") jours1
+					.col-xs-12.col-sm-10
+						input#jours1.form-control(name="jours1",  value="#{endroits.heuresOuverture[0].jours}")
+				.form-group
+					label.col-xs-10.col-sm-2.control-label(for="ouverture1") ouverture1
+					.col-xs-12.col-sm-10
+						input#ouverture1.form-control(name="ouverture1", value="#{endroits.heuresOuverture[0].ouverture}")
+				.form-group
+					label.col-xs-10.col-sm-2.control-label(for="fermeture1") fermeture1
+					.col-xs-12.col-sm-10
+						input#fermeture1.form-control(name="fermeture1",  value="#{endroits.heuresOuverture[0].fermeture}")
+				.form-group
+					label.col-xs-10.col-sm-2.control-label(for="ferme1") ferme1
+					.col-xs-12.col-sm-10
+						input#ferme1.form-control(name="ferme1", value="#{endroits.heuresOuverture[0].ferme}")
+				.form-group
+					label.col-xs-10.col-sm-2.control-label(for="jours2") jours2
+					.col-xs-12.col-sm-10
+						input#jours2.form-control(name="jours2",  value="#{endroits.heuresOuverture[1].jours}")
+				.form-group
+					label.col-xs-10.col-sm-2.control-label(for="ouverture2") ouverture2
+					.col-xs-12.col-sm-10
+						input#ouverture2.form-control(name="ouverture2",  value="#{endroits.heuresOuverture[1].ouverture}")
+				.form-group
+					label.col-xs-10.col-sm-2.control-label(for="fermeture2") fermeture2
+					.col-xs-12.col-sm-10
+						input#fermeture2.form-control(name="fermeture2", value="#{endroits.heuresOuverture[1].fermeture}")
+				.form-group
+					label.col-xs-10.col-sm-2.control-label(for="ferme2") ferme2
+					.col-xs-12.col-sm-10
+						input#ferme2.form-control(name="ferme2", value="#{endroits.heuresOuverture[1].ferme}")
+				button.btn.btn-default.pull-right Valider
+				.col-xs-12.col-md-4
+	p=JSON.stringify(endroits)
+
