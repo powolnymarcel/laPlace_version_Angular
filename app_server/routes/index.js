@@ -19,6 +19,9 @@ var ctrlAutres = require('../controlleurs/autres');
  * @description Routing pour les pages liées aux endroits
  *
  */
+
+//Route permettant de charger le layout de base
+
 router.get('/', ctrlAutres.angularApp);
 //router.get('/endroits/:endroitsid', ctrlEndroits.infoEndroit);
 //router.get('/endroits/ajouter/ajout', ctrlEndroits.ajoutEndroit);
