@@ -19,24 +19,23 @@ var ctrlAutres = require('../controlleurs/autres');
  * @description Routing pour les pages liées aux endroits
  *
  */
-router.get('/', ctrlEndroits.listingAccueilEndroits);
-router.get('/endroits/:endroitsid', ctrlEndroits.infoEndroit);
-router.get('/endroits/ajouter/ajout', ctrlEndroits.ajoutEndroit);
-router.get('/endroits/editer/:endroitsid', ctrlEndroits.editerEndroit);
-router.post('/endroits/editer/:endroitsid/fin', ctrlEndroits.editerEndroitFin);
-//Au cas ou...
-router.get('/endroits/:endroitsid/commentaires', ctrlEndroits.infoEndroit);
-//**
-router.get('/endroits/:endroitsid/commentaires/nouveau', ctrlEndroits.ajouterCommentaire);
-router.post('/endroits/:endroitsid/commentaires/nouveau', ctrlEndroits.actionAjouterCommentaire);
-
-/**
- *
- * @description Routing pour les Autres pages
- *
- */
-
-router.get('/a-propos', ctrlAutres.aPropos);
+router.get('/', ctrlAutres.angularApp);
+//router.get('/endroits/:endroitsid', ctrlEndroits.infoEndroit);
+//router.get('/endroits/ajouter/ajout', ctrlEndroits.ajoutEndroit);
+//router.get('/endroits/editer/:endroitsid', ctrlEndroits.editerEndroit);
+//router.post('/endroits/editer/:endroitsid/fin', ctrlEndroits.editerEndroitFin);
+////Au cas ou...
+//router.get('/endroits/:endroitsid/commentaires', ctrlEndroits.infoEndroit);
+////**
+//router.get('/endroits/:endroitsid/commentaires/nouveau', ctrlEndroits.ajouterCommentaire);
+//router.post('/endroits/:endroitsid/commentaires/nouveau', ctrlEndroits.actionAjouterCommentaire);
+//
+///**
+// *
+// * @description Routing pour les Autres pages
+// *
+// */
+//router.get('/a-propos', ctrlAutres.aPropos);
 module.exports = router;
 
 

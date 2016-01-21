@@ -101,6 +101,7 @@ var noteEtoilees = function () {
 /*															                         */
 //-------------------------------------------------------------------------------------
 var laPlaceServiceAngularDonnees = function ($http) {
+	//La variable prendra la valeur retournée par le get
 	var localisationParCoordonnees = function (lat, lng) {
 		return $http.get('/api/endroits?lng=' + lng + '&lat=' + lat +
 			'&maxDistance=20000000');

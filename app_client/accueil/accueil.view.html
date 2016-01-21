@@ -1,0 +1,35 @@
+<div id="banner" class="page-header">
+	<div class="row">
+		<div class="col-lg-6"></div>
+		<h1>
+			{{ headerDeLaPage.titre }}
+			<small>{{ headerDeLaPage.tagline }}</small>
+		</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-sm-8">
+		<label for="filter">Filtre</label>
+		<input id="filter" type="text", name="filter", ng-model="textFilter">
+		<div class="error">{{ message }}</div>
+		<div class="row list-group">
+			<div class="col-xs-12 list-group-item" ng-repeat="endroit in data.endroits | filter : textFilter">
+				<h4>
+					<a href="/endroits/{{ endroit._id }}">{{ endroit.nom }}</a>
+					<small class="note-etoilees" note-etoilees
+						   rating="endroit.note"></small>
+<span class="badge pull-right badge-default">{{ endroit.distance }}</span>
+				</h4>
+				<p class="address">{{ endroit.adresse }}</p>
+				<p>
+<span class="label label-warning label-facility" ng-repeat="service in endroit.services">
+{{ service }}
+</span>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-4">
+		<p class="lead">{{ sidebar.contenu }}</p>
+	</div>
+</div>
