@@ -5,7 +5,9 @@ function config ($routeProvider) {
 		.when('/', {
 			//Quand je rencontre '/' j'actionne le Ctrl accueilCtrl et j'envoie la vue accueil.view.html
 			templateUrl: 'accueil/accueil.view.html',
-			controller: 'accueilCtrl'
+			controller: 'accueilCtrl',
+			//controlleur as ViewModel, le vm fonctionnera un peu comme un "this" du controlleur VOIR 9.3.3 getting mean
+			controllerAs: 'vm'
 		})
 		.otherwise({redirectTo: '/'});
 }
