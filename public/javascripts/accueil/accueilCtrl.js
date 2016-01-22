@@ -12,18 +12,18 @@ function accueilCtrl ($scope,laPlaceData,geolocalisation) {
 	vm.sidebar = {
 		contenu: "Cherchez un endroit ? laPlace est là pour vous."
 	};
-	vm.message = "Checking your location";
+	vm.message = "Verification en cours de votre localisation";
 	vm.getData = function (position) {
 		var lat = position.coords.latitude,
 			lng = position.coords.longitude;
-		vm.message = "Searching for nearby places";
+		vm.message = "Recherche d'endroits proche en cours";
 		laPlaceData.locationByCoords(lat, lng)
 			.success(function(data) {
-				vm.message = data.length > 0 ? "" : "No locations found nearby";
+				vm.message = data.length > 0 ? "" : "Aucuns endroits trouvé pres de votre positiob";
 				vm.data = { endroits: data };
 			})
 			.error(function (e) {
-				vm.message = "Sorry, something's gone wrong";
+				vm.message = "Desole, quelque chose s'est mal passé.";
 			});
 	};
 	vm.showError = function (error) {
@@ -33,7 +33,7 @@ function accueilCtrl ($scope,laPlaceData,geolocalisation) {
 	};
 	vm.noGeo = function () {
 		$scope.$apply(function() {
-			vm.message = "Geolocation is not supported by this browser.";
+			vm.message = "La geolocalisation n'est pas supportée par votre navigateur.";
 		});
 	};
 	geolocalisation.getPosition(vm.getData,vm.showError,vm.noGeo);
