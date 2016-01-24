@@ -1,6 +1,13 @@
+
+(function () {
+
+
 angular
 	.module('laPlaceApp')
 	.controller('accueilCtrl', accueilCtrl);
+
+	//Injection pour eviter que lors de la minification le code ne se casse la figure
+	accueilCtrl.$inject = ['$scope', 'laPlaceData', 'geolocalisation'];
 
 function accueilCtrl ($scope,laPlaceData,geolocalisation) {
 	var vm = this;
@@ -38,3 +45,5 @@ function accueilCtrl ($scope,laPlaceData,geolocalisation) {
 	};
 	geolocalisation.getPosition(vm.getData,vm.showError,vm.noGeo);
 }
+
+})();

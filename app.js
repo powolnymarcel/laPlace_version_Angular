@@ -10,6 +10,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 //Config de la BDD
 require('./app_api/modeles/bdd');
+
+//Pour minifier le code
+var uglifyJs = require("uglify-js");
+var fs = require('fs');
+//**
 var port = process.env.PORT || 3000;
 var routes = require('./app_server/routes/index');
 var routesApi = require('./app_api/routes/index');
@@ -22,6 +27,27 @@ var app = express();
 app.set('views', path.join(__dirname,'app_server', 'vues'));
 app.set('view engine', 'jade');
 
+
+//---------------------------------------------------------------
+/*             		 	   minification                       */
+//---------------------------------------------------------------
+
+var appClientFiles = [
+	'app_client/app.js',
+	'public/javascripts/accueil/accueilCtrl.js',
+	'app_client/commun/services/geolocalisation.service.js',
+	'app_client/commun/services/laPlaceData.service.js',
+	'app_client/commun/filtres/distanceFormatee.filter.js',
+	'app_client/commun/directives/noteEtoilees/noteEtoilees.directive.js'
+];
+var uglified = uglifyJs.minify(appClientFiles, { compress : false });
+fs.writeFile('public/angular/laPlace.min.js', uglified.code, function (err){
+	if(err) {
+		console.log(err);
+	} else {
+		console.log('Script generated and saved: laPlace.min.js');
+	}
+});
 //---------------------------------------------------------------
 /*                          MIDDLEWARE                         */
 //---------------------------------------------------------------

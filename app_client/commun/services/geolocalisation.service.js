@@ -1,3 +1,6 @@
+
+(function () {
+
 angular
 	.module('laPlaceApp')
 	.service('geolocalisation', geolocalisation);
@@ -14,4 +17,7 @@ function geolocalisation () {
 		getPosition : getPosition
 	};
 }
+
+
+})();
 

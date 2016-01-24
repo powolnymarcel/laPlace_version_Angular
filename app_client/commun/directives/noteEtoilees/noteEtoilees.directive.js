@@ -1,3 +1,4 @@
+(function () {
 angular
 	.module('laPlaceApp')
 	.directive('noteEtoilees', noteEtoilees);
@@ -10,3 +11,5 @@ function noteEtoilees () {
 		templateUrl: '/commun/directives/noteEtoilees/note-etoilees.template.html'
 	};
 }
+})();
+
