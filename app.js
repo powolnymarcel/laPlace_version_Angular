@@ -38,7 +38,9 @@ var appClientFiles = [
 	'app_client/commun/services/geolocalisation.service.js',
 	'app_client/commun/services/laPlaceData.service.js',
 	'app_client/commun/filtres/distanceFormatee.filter.js',
-	'app_client/commun/directives/noteEtoilees/noteEtoilees.directive.js'
+	'app_client/commun/directives/noteEtoilees/noteEtoilees.directive.js',
+	'app_client/commun/directives/footerGenerique/footerGernerique.directive.js',
+	'app_client/commun/directives/navigation/navigation.directive.js'
 ];
 var uglified = uglifyJs.minify(appClientFiles, { compress : false });
 fs.writeFile('public/angular/laPlace.min.js', uglified.code, function (err){
@@ -63,10 +65,13 @@ app.use(express.static(path.join(__dirname, 'app_client')));
 //---------------------------------------------------------------
 /*                          Routes                             */
 //---------------------------------------------------------------
-app.use('/', routes);
+//app.use('/', routes);
 app.use('/api', routesApi);
 app.use('/users', users);
 
+app.use(function(req, res) {
+	res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
