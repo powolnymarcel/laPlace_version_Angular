@@ -24,11 +24,15 @@
 			});
 
 
-		vm.popuAjoutCommentaire = function () {
+		//Affichage d'une MODAL pour l'ajout de commentaires
+		vm.popUpAjoutCommentaire = function () {
+			//$uibModal vient de "https://angular-ui.github.io/bootstrap/" -> modal
 			var uibModalInstance = $uibModal.open({
+				//le template de la modal
 				templateUrl: 'commun/vues/commentaireModal/commentaireModal.vue.html',
+				//Le Ctrl de la modal
 				controller: 'commentaireModalCtrl as vm',
-				//Sera un objet envoyé au controlleur commentaireModalCtrl, il contient nom et ID
+				//Sera un objet envoyé au controlleur "commentaireModalCtrl", il contient nom et ID
 				resolve : {
 					endroitData : function () {
 						return {
@@ -38,6 +42,7 @@
 					}
 				}
 			});
+			//Après l'ajout du comm on push le nouveau comm dans le array "vm.data.endroit.commentaires"
 			uibModalInstance.result.then(function (data) {
 				vm.data.endroit.commentaires.push(data);
 			});
