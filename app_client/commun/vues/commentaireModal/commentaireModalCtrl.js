@@ -38,7 +38,7 @@
 			return false;
 		};
 
-		
+
 		vm.modal = {
 			close : function (result) {
 				$uibModalInstance.close(result);

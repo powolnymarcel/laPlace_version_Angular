@@ -17,6 +17,7 @@ function laPlaceData ($http) {
 		return $http.get('/api/endroits/' + endroitid);
 	};
 
+	//Voir controlleur : "commentaireModalCtrl"
 	var ajoutCommentaireParID = function (endroitid, data) {
 		return $http.post('/api/endroits/' + endroitid + '/commentaires', data);
 	};
