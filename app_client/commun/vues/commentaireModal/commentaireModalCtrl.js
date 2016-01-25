@@ -2,13 +2,14 @@
 	angular
 		.module('laPlaceApp')
 		.controller('commentaireModalCtrl', commentaireModalCtrl);
-	//On injecte le resolve qui contien nom et ID
+	//On injecte le resolve qui contien nom et ID et "laPlaceData" car le service a l'action "ajoutCommentaireParID"
 	commentaireModalCtrl.$inject = ['$uibModalInstance','endroitData','laPlaceData'];
 	function commentaireModalCtrl ($uibModalInstance,endroitData,laPlaceData) {
 		var vm = this;
 		//Donc vm (viewmodel) endroitData qui vient du resolve du CTRL "endroitDetailsCtrl" contiendra "endroitData.endroitNom " et endroitData.endroitid
 		vm.endroitData=endroitData;
 
+		//  ng-submit DU FORMULAIRE
 		vm.envoyerFormulaire = function () {
 			vm.formErreur = "";
 			if(!vm.formData.nom || !vm.formData.note || !vm.formData.texte) {
@@ -20,13 +21,15 @@
 		};
 
 		vm.ajoutCommentaireParID = function (endroitid, formData) {
+			//Fait un POST gràce au service laPlaceData et à l'action ajoutCommentaireParID
 			laPlaceData.ajoutCommentaireParID(endroitid, {
 					auteur : formData.nom,
 					note : formData.note,
 					texte : formData.texte
 				})
 				.success(function (data) {
-					console.log("Success!");
+					//Si l'operation s'est bien passée on log + ferme la modal
+					console.log("Message envoyé avec succes!");
 					vm.modal.close(data);
 				})
 				.error(function (data) {
@@ -34,6 +37,8 @@
 				});
 			return false;
 		};
+
+		
 		vm.modal = {
 			close : function (result) {
 				$uibModalInstance.close(result);
