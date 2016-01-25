@@ -35,12 +35,16 @@ app.set('view engine', 'jade');
 var appClientFiles = [
 	'app_client/app.js',
 	'public/javascripts/accueil/accueilCtrl.js',
+	'public/javascripts/aProposCtrl.js',
 	'app_client/commun/services/geolocalisation.service.js',
 	'app_client/commun/services/laPlaceData.service.js',
 	'app_client/commun/filtres/distanceFormatee.filter.js',
+	'app_client/commun/filtres/ajoutBr.filter.js',
 	'app_client/commun/directives/noteEtoilees/noteEtoilees.directive.js',
 	'app_client/commun/directives/footerGenerique/footerGernerique.directive.js',
-	'app_client/commun/directives/navigation/navigation.directive.js'
+	'app_client/commun/directives/navigation/navigation.directive.js',
+	'app_client/commun/vues/endroitDetail/endroitDetailsCtrl.js',
+	'app_client/commun/vues/commentaireModal/commentaireModalCtrl.js'
 ];
 var uglified = uglifyJs.minify(appClientFiles, { compress : false });
 fs.writeFile('public/angular/laPlace.min.js', uglified.code, function (err){

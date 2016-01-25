@@ -12,8 +12,19 @@ function laPlaceData ($http) {
 		return $http.get('/api/endroits?lng=' + lng + '&lat=' + lat +
 			'&maxDistance=20000000');
 	};
+
+	var endroitParid = function (endroitid) {
+		return $http.get('/api/endroits/' + endroitid);
+	};
+
+	var ajoutCommentaireParID = function (endroitid, data) {
+		return $http.post('/api/endroits/' + endroitid + '/commentaires', data);
+	};
+
 	return {
-		locationByCoords : locationByCoords
+		locationByCoords : locationByCoords,
+		endroitParid: endroitParid,
+		ajoutCommentaireParID:ajoutCommentaireParID
 	};
 }
 

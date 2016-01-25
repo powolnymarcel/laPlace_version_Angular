@@ -1,7 +1,4 @@
-
 (function () {
-
-
 angular
 	.module('laPlaceApp')
 	.controller('accueilCtrl', accueilCtrl);

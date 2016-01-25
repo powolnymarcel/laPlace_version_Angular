@@ -1,0 +1,80 @@
+<div class="row">
+	<div class="col-xs-12 col-md-9">
+		<div class="row">
+			<div class="col-xs-12 col-sm-6">
+				<h2>				{{ vm.data.endroit.nom }}
+				</h2>
+				<p class="rating" note-etoilees note="vm.data.endroit.note"></p>
+				<p>{{ vm.data.endroit.adresse }}</p>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">Heures d'ouverture</h2>
+					</div>
+					<div class="panel-body">
+
+						<p ng-repeat="temps in vm.data.endroit.heuresOuverture" ng-switch
+						   on="temps.ferme">
+							{{ temps.jours }} :
+							<span class="opening-time" ng-switch-when="true">Fermé</span>
+				<span class="opening-time" ng-switch-default>{{ temps.ouverture + " - " +
+				temps.fermeture }}</span>
+						</p>
+					</div>
+				</div>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">Services</h2>
+					</div>
+					<div class="panel-body">
+<span class="label label-warning label-facility" ng-repeat="service in vm.data.endroit.services">
+<span class="glyphicon glyphicon-ok"></span>
+{{ service }}
+</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 location-map">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">Sur la carte</h2>
+					</div>
+					<div class="panel-body"><img src="http://maps.googleapis.com/maps/api/staticmap?center={{
+vm.data.endroit.coords[1] }},{{ vm.data.endroit.coords[0]
+}}&amp;zoom=17&amp;size=400x350&amp;sensor=false&amp;markers={{
+vm.data.endroit.coords[1] }},{{ vm.data.endroit.coords[0]
+}}&amp;scale=2" class="img-responsive img-rounded">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="panel panel-primary review-panel">
+					<div class="panel-heading"><a href="" ng-click="vm.popuAjoutCommentaire()" class="btn btn-default pullright">Ajout commentaire</a>
+						<h2 class="panel-title">Commentaires clients</h2>
+					</div>
+					<div class="panel-body review-container">
+						<div class="review" ng-repeat="commentaire in
+vm.data.endroit.commentaires | orderBy:'temps':true">
+							<div class="row">
+								<div class="well well-sm review-header">
+									<span class="rating" note-etoilees note="commentaire.note"></span>
+									<span class="reviewAuthor">{{ commentaire.auteur }}</span>
+									<small class="reviewTimestamp">{{ commentaire.temps| date : 'd MMMM yyyy' }}</small>
+								</div>
+								<div class="col-xs-12">
+									<p ng-bind-html="commentaire.texte | ajoutBr"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-md-3">
+		<p class="lead">{{ vm.data.endroit.nom }} est sur laPlace car......</p>
+		<p>If you've been and you like it - or if you don't - please leave a
+			review to help other people just like you.</p>
+	</div>
+</div>
