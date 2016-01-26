@@ -94,3 +94,4 @@ process.on('SIGTERM', function() {
 /*  On appelle le modele endroit                               */
 //---------------------------------------------------------------
 require('./endroit');
+require('./utilisateur');
