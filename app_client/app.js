@@ -1,7 +1,7 @@
 (function () {
-	angular.module('laPlaceApp', ['ngRoute','ngSanitize','ui.bootstrap']);
+	angular.module('laPlaceApp', ['ngRoute','ngSanitize','ui.bootstrap','toastr']);
 
-	function config($routeProvider, $locationProvider) {
+	function config($routeProvider, $locationProvider,toastrConfig) {
 		$routeProvider
 			.when('/', {
 				//Quand je rencontre '/' j'actionne le Ctrl accueilCtrl et j'envoie la vue accueil.view.html
@@ -27,10 +27,38 @@
 			})
 			.otherwise({redirectTo: '/'});
 		$locationProvider.html5Mode(true);
+
+		//Config pour le module Toastr (messages flash)
+		angular.extend(toastrConfig, {
+			allowHtml: false,
+			closeButton: false,
+			closeHtml: '<button>&times;</button>',
+			extendedTimeOut: 1000,
+			maxOpened: 0,
+			iconClasses: {
+				error: 'toast-error',
+				info: 'toast-info',
+				success: 'toast-success',
+				warning: 'toast-warning'
+			},
+			messageClass: 'toast-message',
+			onHidden: null,
+			onShown: null,
+			onTap: null,
+			progressBar: true,
+			tapToDismiss: true,
+			templates: {
+				toast: 'directives/toast/toast.html',
+				progressbar: 'directives/progressbar/progressbar.html'
+			},
+			timeOut: 5000,
+			titleClass: 'toast-title',
+			toastClass: 'toast'
+		});
 	}
 
 	angular
 		.module('laPlaceApp')
 		//Injection de la Fn config dans .config
-		.config(['$routeProvider','$locationProvider', config]);
+		.config(['$routeProvider','$locationProvider','toastrConfig', config]);
 })();

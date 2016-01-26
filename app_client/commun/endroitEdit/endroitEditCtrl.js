@@ -4,9 +4,9 @@
 		.controller('endroitEditCtrl', endroitEditCtrl);
 	//Le composant $uibModal vient de 'ui.bootstrap'
 	// Voir : modal - https://angular-ui.github.io/bootstrap/
-	endroitEditCtrl.$inject = ['$routeParams','laPlaceData','$http'];
+	endroitEditCtrl.$inject = ['$routeParams','laPlaceData','$http','toastr'];
 
-	function endroitEditCtrl ($routeParams,laPlaceData,$http) {
+	function endroitEditCtrl ($routeParams,laPlaceData,$http,toastr) {
 		var vm = this;
 		vm.endroitid = $routeParams.endroitid;
 		laPlaceData.endroitParid(vm.endroitid)
@@ -45,7 +45,7 @@
 			$http.put("api/endroits/"+$routeParams.endroitid,donnees)
 				.success(function (data, status, headers) {
 					console.log("successsuccesssuccesssuccesssuccesssuccessvv")
-
+					toastr.success('Edition effectuée avec succes','Edition');
 					console.log(data);
 					vm.headerDeLaPage = {
 						titre: vm.data.endroit.nom
@@ -53,6 +53,7 @@
 				})
 				.error(function (data, status, header, config) {
 					console.log("erererere")
+					toastr.error('Your credentials are gone', 'Error');
 				});
 		}
 
