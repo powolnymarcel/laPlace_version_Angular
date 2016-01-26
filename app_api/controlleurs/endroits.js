@@ -146,20 +146,45 @@ module.exports.creationEndroit = function(req, res) {
 	});
 };
 
+
+
+module.exports.editerEndroitFin = function(req, res) {
+
+	var requestOptions, path;
+	path = "/api/endroits/" + req.params.endroitsid;
+	requestOptions = {
+		url : "http://localhost:3000" + path,
+		method : "PUT",
+		json : req.body
+	};
+	request(
+		requestOptions,
+		function(err, response, body) {
+			var data = body;
+			renderEditFin(req, res,data);
+
+		}
+	);
+};
+
+
+
 //---------------------------------------------------------------
 /*                  METTRE A JOUR ENDROIT                      */
 //---------------------------------------------------------------
 /* PUT /api/endroits/:endroitsid */
 module.exports.endroitsUpdate = function(req, res) {
-	console.log(req.body);
+	console.log( req.body);
+	console.log("ssssssssssssssssssssssssssssssssssssssss");
+	console.log( req.body.heuresOuverture);
+	console.log("ssssssssssssssssssssssssssssssssssssssss");
 	if (!req.params.endroitsid) {
 		sendJsonResponse(res, 404, {
 			"message": "Pas trouve, le id de l'endroit est requis"
 		});
 		return;
 	}
-	Endroit
-		.findById(req.params.endroitsid)
+	Endroit.findById(req.params.endroitsid)
 		//Select tous sauf les 2 champs suivants
 		.select('-commentaires -note')
 		.exec(
@@ -173,20 +198,22 @@ module.exports.endroitsUpdate = function(req, res) {
 					sendJsonResponse(res, 400, err);
 					return;
 				}
+				console.log('ENDROIT TROUVE, pret pour l\'update de:  '+req.params.endroitsid)
+
 				endroits.nom = req.body.nom;
 				endroits.adresse = req.body.adresse;
-				endroits.services = req.body.services.split(",");
-				endroits.coords = [parseFloat(req.body.lng), parseFloat(req.body.lat)];
+				endroits.services = req.body.services.split(',');
+				endroits.coords = [parseFloat(req.body.coords[0]), parseFloat(req.body.coords[1])];
 				endroits.heuresOuverture = [{
-					jours: req.body.jours1,
-					ouverture: req.body.ouverture1,
-					fermeture: req.body.fermeture1,
-					ferme: req.body.ferme1,
+					jours: req.body.heuresOuverture[0].jours,
+					ouverture:req.body.heuresOuverture[0].ouverture,
+					fermeture:req.body.heuresOuverture[0].fermeture,
+					ferme: req.body.heuresOuverture[0].ferme
 				}, {
-					jours: req.body.jours2,
-					ouverture: req.body.ouverture2,
-					fermeture: req.body.fermeture2,
-					ferme: req.body.ferme2,
+					jours: req.body.heuresOuverture[1].jours,
+					ouverture: req.body.heuresOuverture[1].ouverture,
+					fermeture: req.body.heuresOuverture[1].fermeture,
+					ferme: req.body.heuresOuverture[1].ferme
 				}];
 				endroits.save(function(err, endroits) {
 					if (err) {

@@ -1,0 +1,18 @@
+<h1>Edition de {{vm.headerDeLaPage.titre}}</h1>
+
+<form  ng-submit="vm.modifier()" >
+	<input type="text" ng-model="vm.data.endroit.nom">
+	<input type="text"   ng-model="vm.data.endroit.adresse">
+	<input type="text"  ng-model="vm.data.endroit.services">
+	<input type="text"   ng-model="vm.data.endroit.coords[0]">
+	<input type="text"    ng-model="vm.data.endroit.coords[1]">
+	<input type="text"   	ng-model="vm.data.endroit.heuresOuverture[0].jours">
+	<input type="text"   	 ng-model="vm.data.endroit.heuresOuverture[0].ouverture">
+	<input type="text"   	ng-model="vm.data.endroit.heuresOuverture[0].fermeture">
+	<input type="text"   	ng-model="vm.data.endroit.heuresOuverture[0].ferme">
+	<input type="text"   	ng-model="vm.data.endroit.heuresOuverture[1].jours">
+	<input type="text"   ng-model="vm.data.endroit.heuresOuverture[1].ouverture">
+	<input type="text"   ng-model="vm.data.endroit.heuresOuverture[1].fermeture">
+	<input type="text"   	ng-model="vm.data.endroit.heuresOuverture[1].ferme">
+	<input type="submit">
+</form>

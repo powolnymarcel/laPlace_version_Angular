@@ -20,6 +20,11 @@
 				controller: 'endroitDetailsCtrl',
 				controllerAs: 'vm'
 			})
+			.when('/endroits/editer/:endroitid', {
+				templateUrl: 'commun/endroitEdit/endroitEdit.vue.html',
+				controller: 'endroitEditCtrl',
+				controllerAs: 'vm'
+			})
 			.otherwise({redirectTo: '/'});
 		$locationProvider.html5Mode(true);
 	}

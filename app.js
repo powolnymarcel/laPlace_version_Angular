@@ -44,7 +44,8 @@ var appClientFiles = [
 	'app_client/commun/directives/footerGenerique/footerGernerique.directive.js',
 	'app_client/commun/directives/navigation/navigation.directive.js',
 	'app_client/commun/vues/endroitDetail/endroitDetailsCtrl.js',
-	'app_client/commun/vues/commentaireModal/commentaireModalCtrl.js'
+	'app_client/commun/vues/commentaireModal/commentaireModalCtrl.js',
+	'app_client/commun/endroitEdit/endroitEditCtrl.js'
 ];
 var uglified = uglifyJs.minify(appClientFiles, { compress : false });
 fs.writeFile('public/angular/laPlace.min.js', uglified.code, function (err){
