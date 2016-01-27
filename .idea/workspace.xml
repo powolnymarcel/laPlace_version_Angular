@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b0f1f50e-d2aa-4346-9b2b-4a42b61fbfae" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_api/controlleurs/commentaires.js" afterPath="$PROJECT_DIR$/app_api/controlleurs/commentaires.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_client/commun/services/laPlaceData.service.js" afterPath="$PROJECT_DIR$/app_client/commun/services/laPlaceData.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_client/commun/vues/commentaireModal/commentaireModal.vue.html" afterPath="$PROJECT_DIR$/app_client/commun/vues/commentaireModal/commentaireModal.vue.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_client/commun/vues/commentaireModal/commentaireModalCtrl.js" afterPath="$PROJECT_DIR$/app_client/commun/vues/commentaireModal/commentaireModalCtrl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_client/commun/vues/endroitDetail/endroitDetails.vue.html" afterPath="$PROJECT_DIR$/app_client/commun/vues/endroitDetail/endroitDetails.vue.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_client/commun/vues/endroitDetail/endroitDetailsCtrl.js" afterPath="$PROJECT_DIR$/app_client/commun/vues/endroitDetail/endroitDetailsCtrl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular/laPlace.min.js" afterPath="$PROJECT_DIR$/public/angular/laPlace.min.js" />
@@ -34,17 +30,17 @@
         <entry file="file://$PROJECT_DIR$/app_client/commun/vues/endroitDetail/endroitDetailsCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="12" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
+              <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="endroitDetails.vue.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="endroitDetails.vue.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app_client/commun/vues/endroitDetail/endroitDetails.vue.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.961538">
-              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.23151751">
+              <caret line="64" column="61" selection-start-line="64" selection-start-column="61" selection-end-line="64" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -60,41 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="laPlaceData.service.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app_client/commun/services/laPlaceData.service.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="commentaires.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app_api/controlleurs/commentaires.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="287" column="0" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="endroitEdit.vue.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app_client/commun/endroitEdit/endroitEdit.vue.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.65384614">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="endroitEditCtrl.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app_client/commun/endroitEdit/endroitEditCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="55" column="26" selection-start-line="55" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -110,10 +76,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="commentaireModalCtrl.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="commentaireModalCtrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app_client/commun/vues/commentaireModal/commentaireModalCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6535533">
+            <state vertical-scroll-proportion="-17.758621">
               <caret line="32" column="68" selection-start-line="32" selection-start-column="68" selection-end-line="32" selection-end-column="68" />
               <folding />
             </state>
@@ -124,7 +90,37 @@
         <entry file="file://$PROJECT_DIR$/app_client/commun/services/authentification.service.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="67" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="67" />
+              <caret line="48" column="21" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="navigationCtrl.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app_client/commun/directives/navigation/navigationCtrl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="laPlace.min.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/angular/laPlace.min.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="8815" selection-start-line="0" selection-start-column="8815" selection-end-line="0" selection-end-column="8815" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="navigation.template.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app_client/commun/directives/navigation/navigation.template.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.5">
+              <caret line="13" column="87" selection-start-line="13" selection-start-column="86" selection-end-line="13" selection-end-column="108" />
               <folding />
             </state>
           </provider>
@@ -145,7 +141,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/javascripts/accueil/homeCtrl.js" />
         <option value="$PROJECT_DIR$/public/javascripts/home/homeCtrl.js" />
         <option value="$PROJECT_DIR$/public/javascripts/laPlaceApp.js" />
         <option value="$PROJECT_DIR$/app_server/routes/index.js" />
@@ -177,7 +172,6 @@
         <option value="$PROJECT_DIR$/app_api/routes/index.js" />
         <option value="$PROJECT_DIR$/app_api/modeles/endroit.js" />
         <option value="$PROJECT_DIR$/app_client/commun/authentification/enregistrement/enregistrementCtrl.js" />
-        <option value="$PROJECT_DIR$/app_client/commun/services/authentification.service.js" />
         <option value="$PROJECT_DIR$/app_client/app.js" />
         <option value="$PROJECT_DIR$/app_client/commun/directives/navigation/navigation.directive.js" />
         <option value="$PROJECT_DIR$/app.js" />
@@ -190,12 +184,14 @@
         <option value="$PROJECT_DIR$/app_client/commun/vues/a-propos.vue.html" />
         <option value="$PROJECT_DIR$/app_client/index.html" />
         <option value="$PROJECT_DIR$/app_client/accueil/accueil.view.html" />
-        <option value="$PROJECT_DIR$/app_client/commun/vues/endroitDetail/endroitDetails.vue.html" />
         <option value="$PROJECT_DIR$/app_client/commun/services/laPlaceData.service.js" />
         <option value="$PROJECT_DIR$/app_api/controlleurs/commentaires.js" />
-        <option value="$PROJECT_DIR$/app_client/commun/vues/endroitDetail/endroitDetailsCtrl.js" />
         <option value="$PROJECT_DIR$/app_client/commun/vues/commentaireModal/commentaireModal.vue.html" />
         <option value="$PROJECT_DIR$/app_client/commun/vues/commentaireModal/commentaireModalCtrl.js" />
+        <option value="$PROJECT_DIR$/app_client/commun/services/authentification.service.js" />
+        <option value="$PROJECT_DIR$/public/angular/laPlace.min.js" />
+        <option value="$PROJECT_DIR$/app_client/commun/vues/endroitDetail/endroitDetailsCtrl.js" />
+        <option value="$PROJECT_DIR$/app_client/commun/vues/endroitDetail/endroitDetails.vue.html" />
       </list>
     </option>
   </component>
@@ -692,7 +688,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15384616" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32781065" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32781065" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289941" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -827,14 +823,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/angular/laPlace.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="3274" selection-start-line="0" selection-start-column="3274" selection-end-line="0" selection-end-column="3274" />
           <folding />
         </state>
       </provider>
@@ -983,14 +971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app_client/commun/directives/navigation/navigationCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app_client/commun/authentification/enregistrement/enregistrement.view.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.72727275">
@@ -1039,22 +1019,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app_client/commun/directives/navigation/navigation.template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2579014">
-          <caret line="12" column="41" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app_client/commun/services/authentification.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="67" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app_client/commun/endroitEdit/endroitEdit.vue.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.65384614">
@@ -1079,14 +1043,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app_client/commun/vues/endroitDetail/endroitDetails.vue.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.961538">
-          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app_api/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1103,14 +1059,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app_client/commun/vues/endroitDetail/endroitDetailsCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="12" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app_client/commun/vues/commentaireModal/commentaireModal.vue.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.6363635">
@@ -1121,8 +1069,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app_client/commun/vues/commentaireModal/commentaireModalCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6535533">
+        <state vertical-scroll-proportion="-17.758621">
           <caret line="32" column="68" selection-start-line="32" selection-start-column="68" selection-end-line="32" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app_client/commun/directives/navigation/navigationCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/angular/laPlace.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="8815" selection-start-line="0" selection-start-column="8815" selection-end-line="0" selection-end-column="8815" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app_client/commun/directives/navigation/navigation.template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.5">
+          <caret line="13" column="87" selection-start-line="13" selection-start-column="86" selection-end-line="13" selection-end-column="108" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app_client/commun/services/authentification.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="21" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app_client/commun/vues/endroitDetail/endroitDetailsCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app_client/commun/vues/endroitDetail/endroitDetails.vue.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23151751">
+          <caret line="64" column="61" selection-start-line="64" selection-start-column="61" selection-end-line="64" selection-end-column="61" />
           <folding />
         </state>
       </provider>

@@ -12,7 +12,7 @@
 		vm.estLoggeDansLapp = authentificationService.estLoggeDansLapp();
 		vm.lePathCourrant = $location.path();
 
-
+vm.encours = authentificationService.utilisateurEnCours();
 
 		vm.supprLeCom=function(idDuCommentaire){
 			if(window.confirm('Etes-vous sur?')){
@@ -40,7 +40,7 @@
 				);
 
 			};
-			
+
 		};
 
 

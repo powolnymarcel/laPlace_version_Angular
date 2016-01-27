@@ -69,7 +69,8 @@ vm.data.endroit.coords[1] }},{{ vm.data.endroit.coords[0]
 									<span class="rating" note-etoilees note="commentaire.note"></span>
 									<span class="reviewAuthor">{{ commentaire.auteur }}</span>
 									<span class="reviewAuthor">{{ commentaire.auteur_id }}</span>
-									<span class="glyphicon glyphicon-remove-sign" ng-click="vm.supprLeCom(commentaire._id)"></span>
+									<span class="glyphicon glyphicon-remove-sign" ng-click="vm.supprLeCom(commentaire._id)" ng-if="commentaire.auteur == vm.encours.nom"
+									></span>
 									<small class="reviewTimestamp">{{ commentaire.temps| date : 'd MMMM yyyy' }}</small>
 								</div>
 								<div class="col-xs-12">
