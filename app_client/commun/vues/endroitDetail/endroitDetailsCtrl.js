@@ -23,11 +23,11 @@ vm.encours = authentificationService.utilisateurEnCours();
 					function(response){
 						toastr.success('Suppression effectuée avec succes','Suppression');
 
+						//On rafraichi les comm
 						laPlaceData.endroitParid(vm.endroitid)
 							.success(function(data) {
 								vm.data = { endroit: data };
 								vm.data.endroit.commentaires=vm.data.endroit.commentaires;
-
 							})
 							.error(function (e) {
 								console.log(e);

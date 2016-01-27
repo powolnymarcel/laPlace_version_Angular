@@ -313,9 +313,9 @@ module.exports.commentaireDelete = function(req, res) {
 						});
 					} else {
 						recupAuteur(req, res, function (req, res, auteur) {
-							if(endroits.commentaires.id(req.params.commentairesid).auteur_id){
+							if(endroits.commentaires.id(req.params.commentairesid).auteur_id || auteur.admin == true){
 								var auteurIDDuComm = (endroits.commentaires.id(req.params.commentairesid).auteur_id).toString();
-								if(auteur._id == auteurIDDuComm){
+								if(auteur._id == auteurIDDuComm || auteur.admin == true  ){
 									endroits.commentaires.id(req.params.commentairesid).remove();
 									endroits.save(function(err) {
 										if (err) {
