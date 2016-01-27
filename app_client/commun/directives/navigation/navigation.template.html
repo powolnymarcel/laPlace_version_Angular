@@ -6,7 +6,7 @@
 		<div id="navbar-main" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="/#a-propos">A propos.</a></li>
-				<li><a href="/#endroits/ajouter/ajout">Ajouter +</a></li>
+				<li ng-if="navvm.utilisateurEnCours.admin === true"><a href="/#endroits/ajouter/ajout">Ajouter +</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li ng-hide="navvm.estLoggeDansLapp"><a href="/#login/?page={{ navvm.lePathCourrant}}">Connexion</a></li>

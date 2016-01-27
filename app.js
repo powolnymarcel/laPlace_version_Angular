@@ -56,7 +56,8 @@ var appClientFiles = [
 	'app_client/commun/services/authentification.service.js',
 	'app_client/commun/authentification/enregistrement/enregistrementCtrl.js',
 	'app_client/commun/authentification/login/loginCtrl.js',
-	'app_client/commun/directives/navigation/navigationCtrl.js'
+	'app_client/commun/directives/navigation/navigationCtrl.js',
+	'app_client/commun/endroitAjouter/endroitAjouterCtrl.js'
 ];
 var uglified = uglifyJs.minify(appClientFiles, { compress : false });
 fs.writeFile('public/angular/laPlace.min.js', uglified.code, function (err){

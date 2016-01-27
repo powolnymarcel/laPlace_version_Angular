@@ -1,0 +1,20 @@
+<navigation></navigation>
+
+<h1>Ajout d'un endroit sur laPlace</h1>
+
+<form  ng-submit="vm.ajouter()" >
+	nom<input type="text" ng-model="vm.data.endroit.nom"><br>
+	adresse<input type="text"   ng-model="vm.data.endroit.adresse"><br>
+	services<input type="text"  ng-model="vm.data.endroit.services"><br>
+	coords1<input type="text"   ng-model="vm.data.endroit.coords[0]"><br>
+	coords2<input type="text"    ng-model="vm.data.endroit.coords[1]"><br>
+	heuresOuverture-jours<input type="text"   	ng-model="vm.data.endroit.heuresOuverture[0].jours"><br>
+	heuresOuverture-ouverture<input type="text"   	 ng-model="vm.data.endroit.heuresOuverture[0].ouverture"><br>
+	heuresOuverture-fermeture<input type="text"   	ng-model="vm.data.endroit.heuresOuverture[0].fermeture"><br>
+	heuresOuverture-ferme<input type="text"   	ng-model="vm.data.endroit.heuresOuverture[0].ferme"><br>
+	heuresOuverture-<input type="text"   	ng-model="vm.data.endroit.heuresOuverture[1].jours"><br>
+	heuresOuverture-<input type="text"   ng-model="vm.data.endroit.heuresOuverture[1].ouverture"><br>
+	heuresOuverture-<input type="text"   ng-model="vm.data.endroit.heuresOuverture[1].fermeture"><br>
+	heuresOuverture-<input type="text"   	ng-model="vm.data.endroit.heuresOuverture[1].ferme"><br>
+	heuresOuverture-<input type="submit">
+</form>

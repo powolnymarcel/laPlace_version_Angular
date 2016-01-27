@@ -30,6 +30,14 @@
 				controller: 'endroitDetailsCtrl',
 				controllerAs: 'vm'
 			})
+			.when('/endroits/ajouter/ajout', {
+				templateUrl: 'commun/endroitAjouter/endroitAjouter.vue.html',
+				controller: 'endroitAjouterCtrl',
+				controllerAs: 'vm',
+				//Voir le .run plus bas, permet de verifier si un token est  present, si oui alors on peut acceder, si non alors
+				//redirect vers /login
+				secure: true
+			})
 			.when('/endroits/editer/:endroitid', {
 				templateUrl: 'commun/endroitEdit/endroitEdit.vue.html',
 				controller: 'endroitEditCtrl',

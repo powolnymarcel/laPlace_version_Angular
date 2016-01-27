@@ -28,6 +28,57 @@ var sendJsonResponse = function(res, status, content) {
 	res.status(status);
 	res.json(content);
 };
+
+
+
+
+
+//---------------------------------------------------------------
+/*                 Recuperation infos AUTEUR       		       */
+//---------------------------------------------------------------
+var Utilisateur = mongoose.model('Utilisateur');
+var recupAuteur = function(req, res, callback) {
+	//Si il y a un JWT et un payload email
+	if (req.payload && req.payload.email) {
+		//On cherche l'user via l'email
+		Utilisateur
+			.findOne({ email : req.payload.email })
+			.exec(function(err, utilisateur) {
+				if (!utilisateur) {
+					sendJSONresponse(res, 404, {
+						"message": "Utilisateur non trouvé"
+					});
+					return;
+				} else if (err) {
+					console.log(err);
+					sendJSONresponse(res, 404, err);
+					return;
+				}
+				//On retourne le nom de l'utilisateur
+				callback(req, res, utilisateur);
+			});
+	} else {
+		sendJSONresponse(res, 404, {
+			"message": "Utilisateur  trouvé!"
+		});
+		return;
+	}
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //---------------------------------------------------------------
 /*              VOIR ENDROIT PAR DISTANCE                      */
 //---------------------------------------------------------------
@@ -121,27 +172,43 @@ module.exports.endroitsVoir = function(req, res) {
 //---------------------------------------------------------------
 /*POST /api/endroits */
 module.exports.creationEndroit = function(req, res) {
-	Endroit.create({
-		nom: req.body.nom,
-		adresse: req.body.adresse,
-		services: req.body.services.split(","),
-		coords: [parseFloat(req.body.lng), parseFloat(req.body.lat)],
-		heuresOuverture: [{
-			jours: req.body.jours1,
-			ouverture: req.body.ouverture1,
-			fermeture: req.body.fermeture1,
-			ferme: req.body.ferme1,
-		}, {
-			jours: req.body.jours2,
-			ouverture: req.body.ouverture2,
-			fermeture: req.body.fermeture2,
-			ferme: req.body.ferme2,
-		}]
-	}, function(err, endroits) {
-		if (err) {
-			sendJsonResponse(res, 400, err);
-		} else {
-			sendJsonResponse(res, 201, endroits);
+	console.log(req.body)
+
+	recupAuteur(req, res, function (req, res, auteur) {
+		if(auteur.admin){
+			if(req.body.ferme1 =='false'){
+				var ferme=false;
+			}
+			else{
+				var ferme=true;
+
+			}
+			Endroit.create({
+				nom: req.body.nom,
+				adresse: req.body.adresse,
+				services: req.body.services.split(","),
+				coords:  [parseFloat(req.body.coords[0]), parseFloat(req.body.coords[1])],
+				heuresOuverture: [{
+					jours: req.body.heuresOuverture[0].jours,
+					ouverture:req.body.heuresOuverture[0].ouverture,
+					fermeture:req.body.heuresOuverture[0].fermeture,
+					ferme: req.body.heuresOuverture[0].ferme
+				}, {
+					jours: req.body.heuresOuverture[1].jours,
+					ouverture: req.body.heuresOuverture[1].ouverture,
+					fermeture: req.body.heuresOuverture[1].fermeture,
+					ferme: req.body.heuresOuverture[1].ferme
+				}]
+			}, function(err, endroits) {
+				if (err) {
+					sendJsonResponse(res, 400, err);
+				} else {
+					sendJsonResponse(res, 201, endroits);
+				}
+			});
+		}
+		else {
+			sendJsonResponse(res, 401, err);
 		}
 	});
 };

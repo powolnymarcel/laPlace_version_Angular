@@ -20,10 +20,10 @@ var ctrlAuth = require('../controlleurs/authentification');
 /*                 Routes ENDROITS                             */
 //---------------------------------------------------------------
 router.get('/endroits', ctrlEndroits.endroitsListeParDistance);
-router.post('/endroits', ctrlEndroits.creationEndroit);
+router.post('/endroits',auth, ctrlEndroits.creationEndroit);
 router.get('/endroits/:endroitsid', ctrlEndroits.endroitsVoir);
-router.put('/endroits/:endroitsid', ctrlEndroits.endroitsUpdate);
-router.delete('/endroits/:endroitsid', ctrlEndroits.endroitsDelete);
+router.put('/endroits/:endroitsid',auth, ctrlEndroits.endroitsUpdate);
+router.delete('/endroits/:endroitsid',auth, ctrlEndroits.endroitsDelete);
 
 //---------------------------------------------------------------
 /*                 Routes COMMENTAIRES                         */
