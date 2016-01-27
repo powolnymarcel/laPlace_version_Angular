@@ -22,7 +22,7 @@
 					<small class="note-etoilees" note-etoilees
 						   note="endroit.note"></small>
 <span class="badge pull-right badge-default">{{ endroit.distance |distanceFormatee  }}</span>
-					<a href="/#/endroits/editer/{{endroit._id}}" class="pull-right">Editer</a>
+					<a href="/#/endroits/editer/{{endroit._id}}" ng-if="vm.encours.admin" class="pull-right">Editer</a>
 				</h4>
 				<p class="address">{{ endroit.adresse }}</p>
 				<p>

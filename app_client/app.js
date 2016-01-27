@@ -21,7 +21,7 @@
 				controllerAs: 'vm'
 			})
 			.when('/login', {
-				templateUrl: 'commun/authentification/login/login.view.html',
+				templateUrl: 'commun/authentification//login/login.view.html',
 				controller: 'loginCtrl',
 				controllerAs: 'vm'
 			})
@@ -33,7 +33,10 @@
 			.when('/endroits/editer/:endroitid', {
 				templateUrl: 'commun/endroitEdit/endroitEdit.vue.html',
 				controller: 'endroitEditCtrl',
-				controllerAs: 'vm'
+				controllerAs: 'vm',
+				//Voir le .run plus bas, permet de verifier si un token est  present, si oui alors on peut acceder, si non alors
+				//redirect vers /login
+				secure: true
 			})
 			.otherwise({redirectTo: '/'});
 		$locationProvider.html5Mode(true);
@@ -67,8 +70,35 @@
 		});
 	}
 
+
 	angular
 		.module('laPlaceApp')
 		//Injection de la Fn config dans .config
-		.config(['$routeProvider','$locationProvider','toastrConfig', config]);
+		.config(['$routeProvider','$locationProvider','toastrConfig', config])
+
+
+		//Permet de proteger les routes via Angular
+	.run(['$rootScope', '$location', 'authentificationService',
+		function ($rootScope, $location, authentificationService) {
+			//Client-side security. Server-side framework MUST add it's
+			//own security as well since client-based “security” is easily hacked
+			$rootScope.$on('$routeChangeStart', function (event, next, current) {
+
+				if (next && next.$$route && next.$$route.secure) {
+
+					if(authentificationService.estLoggeDansLapp() && authentificationService.utilisateurEnCours().admin ===true){
+						console.log("c'est l'admin !!")
+					}
+					else{
+							$rootScope.$evalAsync(function () {
+								$location.path('/login');
+							});
+						console.log("C'est pas l'admin....")
+
+					}
+
+				}
+			});
+
+		}]);
 })();

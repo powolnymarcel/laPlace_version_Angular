@@ -4,10 +4,14 @@ angular
 	.controller('accueilCtrl', accueilCtrl);
 
 	//Injection pour eviter que lors de la minification le code ne se casse la figure
-	accueilCtrl.$inject = ['$scope', 'laPlaceData', 'geolocalisation'];
+	accueilCtrl.$inject = ['$scope', 'laPlaceData', 'geolocalisation','authentificationService'];
 
-function accueilCtrl ($scope,laPlaceData,geolocalisation) {
+function accueilCtrl ($scope,laPlaceData,geolocalisation,authentificationService) {
 	var vm = this;
+
+
+	vm.encours = authentificationService.utilisateurEnCours();
+
 
 	vm.headerDeLaPage = {
 		titre: 'laPlace ',

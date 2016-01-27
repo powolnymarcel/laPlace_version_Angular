@@ -45,6 +45,24 @@
 			}
 		};
 
+
+
+
+
+		var ddd = function() {
+			var token = getToken();
+			if(token){
+				return true
+			} else {
+				return false;
+			}
+		};
+
+
+
+
+
+
 		//Permet au service de recuperer les infos de l'utilisateur loggé
 		var utilisateurEnCours = function() {
 			//Si utilisateur loggé
@@ -71,7 +89,8 @@
 			login:login,
 			utilisateurEnCours:utilisateurEnCours,
 			estLoggeDansLapp:estLoggeDansLapp,
-			logout:logout
+			logout:logout,
+			ddd:ddd
 		};
 
 

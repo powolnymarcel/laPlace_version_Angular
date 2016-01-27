@@ -4,9 +4,12 @@
 		.controller('endroitEditCtrl', endroitEditCtrl);
 	//Le composant $uibModal vient de 'ui.bootstrap'
 	// Voir : modal - https://angular-ui.github.io/bootstrap/
-	endroitEditCtrl.$inject = ['$routeParams','laPlaceData','$http','toastr'];
+	endroitEditCtrl.$inject = ['$routeParams','laPlaceData','$http','toastr','authentificationService'];
 
-	function endroitEditCtrl ($routeParams,laPlaceData,$http,toastr) {
+	function endroitEditCtrl ($routeParams,laPlaceData,$http,toastr,authentificationService) {
+
+
+
 		var vm = this;
 		vm.endroitid = $routeParams.endroitid;
 		laPlaceData.endroitParid(vm.endroitid)
