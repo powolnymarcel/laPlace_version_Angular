@@ -19,10 +19,7 @@ function laPlaceData ($http,authentificationService) {
 
 	//Voir controlleur : "commentaireModalCtrl"
 	var ajoutCommentaireParID = function (endroitid, data) {
-		return $http.post('/api/endroits/' + endroitid + '/commentaires', data, {
-			headers: {			Authorization: 'Bearer '+ authentificationService.getToken()
-		}
-		});
+		return $http.post('/api/endroits/' + endroitid + '/commentaires', data, {headers: {	Authorization: 'Bearer '+ authentificationService.getToken()}});
 	};
 
 	return {

@@ -11,7 +11,8 @@
 
 		//  ng-submit DU FORMULAIRE
 		vm.envoyerFormulaire = function () {
-			vm.formErreur = "";
+			vm.formErreur = "";				console.log('arret ici')
+
 			if(!vm.formData.note || !vm.formData.texte) {
 				vm.formErreur = "Tous les champs sont requis.";
 				return false;
@@ -29,6 +30,8 @@
 				.success(function (data) {
 					//Si l'operation s'est bien passée on log + ferme la modal
 					console.log("Message envoyé avec succes!");
+					toastr.success('Message envoyé avec succes!', 'Succes');
+
 					vm.modal.close(data);
 				})
 				.error(function (data) {

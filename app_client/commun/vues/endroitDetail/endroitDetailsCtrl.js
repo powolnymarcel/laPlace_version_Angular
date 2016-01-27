@@ -4,13 +4,45 @@
 		.controller('endroitDetailsCtrl', endroitDetailsCtrl);
 	//Le composant $uibModal vient de 'ui.bootstrap'
 	// Voir : modal - https://angular-ui.github.io/bootstrap/
-	endroitDetailsCtrl.$inject = ['$routeParams','$location','$uibModal','laPlaceData','authentificationService'];
+	endroitDetailsCtrl.$inject = ['$http','$routeParams','$location','$uibModal','laPlaceData','authentificationService','toastr'];
 
-	function endroitDetailsCtrl ($routeParams,$location,$uibModal,laPlaceData,authentificationService) {
+	function endroitDetailsCtrl ($http,$routeParams,$location,$uibModal,laPlaceData,authentificationService,toastr) {
 		var vm = this;
 		vm.endroitid = $routeParams.endroitid;
 		vm.estLoggeDansLapp = authentificationService.estLoggeDansLapp();
 		vm.lePathCourrant = $location.path();
+
+
+
+		vm.supprLeCom=function(idDuCommentaire){
+			if(window.confirm('Etes-vous sur?')){
+				console.log('id de endroit: '+$routeParams.endroitid);
+				console.log('id du commentaire: '+idDuCommentaire);
+
+				$http.delete('/api/endroits/'+$routeParams.endroitid+'/commentaires/' + idDuCommentaire, {headers: {	Authorization: 'Bearer '+ authentificationService.getToken()}}).then(
+					function(response){
+						toastr.success('Suppression effectuée avec succes','Suppression');
+
+						laPlaceData.endroitParid(vm.endroitid)
+							.success(function(data) {
+								vm.data = { endroit: data };
+								vm.data.endroit.commentaires=vm.data.endroit.commentaires;
+
+							})
+							.error(function (e) {
+								console.log(e);
+							});
+					},
+					function(response){
+						console.log(response)
+						toastr.error(response.data.message, 'Erreur');
+					}
+				);
+
+			};
+			
+		};
+
 
 
 		laPlaceData.endroitParid(vm.endroitid)

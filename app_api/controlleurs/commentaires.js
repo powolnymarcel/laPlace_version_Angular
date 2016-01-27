@@ -312,24 +312,31 @@ module.exports.commentaireDelete = function(req, res) {
 							"message": "ID commentaire non trouve"
 						});
 					} else {
-
 						recupAuteur(req, res, function (req, res, auteur) {
-
-							var auteurIDDuComm = (endroits.commentaires.id(req.params.commentairesid).auteur_id).toString();
-							if(auteur._id == auteurIDDuComm){
-								endroits.commentaires.id(req.params.commentairesid).remove();
-								endroits.save(function(err) {
-									if (err) {
-										sendJsonResponse(res, 404, err);
-									} else {
-										mettreAjourNoteGlobaleEndroit(endroits._id);
-										sendJsonResponse(res, 204, null);
-									}
-								})
+							if(endroits.commentaires.id(req.params.commentairesid).auteur_id){
+								var auteurIDDuComm = (endroits.commentaires.id(req.params.commentairesid).auteur_id).toString();
+								if(auteur._id == auteurIDDuComm){
+									endroits.commentaires.id(req.params.commentairesid).remove();
+									endroits.save(function(err) {
+										if (err) {
+											sendJsonResponse(res, 404, err);
+										} else {
+											mettreAjourNoteGlobaleEndroit(endroits._id);
+											sendJsonResponse(res, 204, null);
+										}
+									})
+								}
+								else{
+									console.log("pas DE TOI <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 ")
+									sendJsonResponse(res, 401,{
+										"message": "Pas votre message"
+									});
+								}
 							}
 							else{
-								console.log("pas DE TOI <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 ")
-								sendJsonResponse(res, 401, err);
+								sendJsonResponse(res, 401,{
+									"message": "Pas votre message"
+								});
 							}
 						});
 					}

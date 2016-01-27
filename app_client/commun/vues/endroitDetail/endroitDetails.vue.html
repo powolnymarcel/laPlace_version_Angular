@@ -63,13 +63,13 @@ vm.data.endroit.coords[1] }},{{ vm.data.endroit.coords[0]
 
 					</div>
 					<div class="panel-body review-container">
-						<div class="review" ng-repeat="commentaire in
-vm.data.endroit.commentaires | orderBy:'temps':true">
+						<div class="review" ng-repeat="commentaire in vm.data.endroit.commentaires | orderBy:'temps':true">
 							<div class="row">
 								<div class="well well-sm review-header">
 									<span class="rating" note-etoilees note="commentaire.note"></span>
 									<span class="reviewAuthor">{{ commentaire.auteur }}</span>
 									<span class="reviewAuthor">{{ commentaire.auteur_id }}</span>
+									<span class="glyphicon glyphicon-remove-sign" ng-click="vm.supprLeCom(commentaire._id)"></span>
 									<small class="reviewTimestamp">{{ commentaire.temps| date : 'd MMMM yyyy' }}</small>
 								</div>
 								<div class="col-xs-12">

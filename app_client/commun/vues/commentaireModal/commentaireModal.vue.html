@@ -6,14 +6,12 @@
 			<h4 id="myModalLabel" class="modal-title">Ajouter un commentaire pour {{ vm.endroitData.endroitNom }}</h4>
 		</div>
 		<div class="modal-body">
-			<div role="alert" ng-show="vm.formErreur" class="alert alert-danger">{{
-				vm.formErreur }}</div>
+			<div role="alert" ng-show="vm.formErreur" class="alert alert-danger">{{	vm.formErreur }}</div>
 
 			<div class="form-group">
 				<label for="note" class="col-xs-10 col-sm-2 control-label">note</label>
 				<div class="col-xs-12 col-sm-2">
-					<select id="note" name="note" ng-model="vm.formData.note"
-							class="form-control input-sm">
+					<select id="note" name="note" ng-model="vm.formData.note" class="form-control input-sm">
 						<option>5</option>
 						<option>4</option>
 						<option>3</option>
