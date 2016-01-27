@@ -176,13 +176,6 @@ module.exports.creationEndroit = function(req, res) {
 
 	recupAuteur(req, res, function (req, res, auteur) {
 		if(auteur.admin){
-			if(req.body.ferme1 =='false'){
-				var ferme=false;
-			}
-			else{
-				var ferme=true;
-
-			}
 			Endroit.create({
 				nom: req.body.nom,
 				adresse: req.body.adresse,
@@ -251,6 +244,12 @@ module.exports.endroitsUpdate = function(req, res) {
 		});
 		return;
 	}
+
+
+	recupAuteur(req, res, function (req, res, auteur) {
+		if(auteur.admin){
+
+
 	Endroit.findById(req.params.endroitsid)
 		//Select tous sauf les 2 champs suivants
 		.select('-commentaires -note')
@@ -291,6 +290,9 @@ module.exports.endroitsUpdate = function(req, res) {
 				});
 			}
 		);
+	}
+})
+
 };
 
 
@@ -300,23 +302,27 @@ module.exports.endroitsUpdate = function(req, res) {
 /* DELETE /api/endroits/:endroitsid */
 module.exports.endroitsDelete = function(req, res) {
 	var endroitsid = req.params.endroitsid;
-	if (endroitsid) {
-		Endroit
-			.findByIdAndRemove(endroitsid)
-			.exec(
-				function(err, endroits) {
-					if (err) {
-						console.log(err);
-						sendJsonResponse(res, 404, err);
-						return;
-					}
-					console.log("ID endroit " + endroitsid + " SUPPRIME !!!");
-					sendJsonResponse(res, 204, null);
-				}
-			);
-	} else {
-		sendJsonResponse(res, 404, {
-			"message": "Pas de ID endroit"
-		});
-	}
+	recupAuteur(req, res, function (req, res, auteur) {
+		if(auteur.admin){
+			if (endroitsid) {
+				Endroit
+					.findByIdAndRemove(endroitsid)
+					.exec(
+						function(err, endroits) {
+							if (err) {
+								console.log(err);
+								sendJsonResponse(res, 404, err);
+								return;
+							}
+							console.log("ID endroit " + endroitsid + " SUPPRIME !!!");
+							sendJsonResponse(res, 204, null);
+						}
+					);
+			} else {
+				sendJsonResponse(res, 404, {
+					"message": "Pas de ID endroit"
+				});
+			}
+		}
+	})
 };

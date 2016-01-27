@@ -4,9 +4,9 @@
 		.controller('endroitEditCtrl', endroitEditCtrl);
 	//Le composant $uibModal vient de 'ui.bootstrap'
 	// Voir : modal - https://angular-ui.github.io/bootstrap/
-	endroitEditCtrl.$inject = ['$routeParams','laPlaceData','$http','toastr','authentificationService'];
+	endroitEditCtrl.$inject = ['$routeParams','$location','laPlaceData','$http','toastr','authentificationService'];
 
-	function endroitEditCtrl ($routeParams,laPlaceData,$http,toastr,authentificationService) {
+	function endroitEditCtrl ($routeParams,$location,laPlaceData,$http,toastr,authentificationService) {
 
 
 
@@ -45,7 +45,7 @@
 			}]
 			};
 			console.log('****************************************');
-			$http.put("api/endroits/"+$routeParams.endroitid,donnees)
+			$http.put("api/endroits/"+$routeParams.endroitid,donnees, {headers: {	Authorization: 'Bearer '+ authentificationService.getToken()}})
 				.success(function (data, status, headers) {
 					console.log("successsuccesssuccesssuccesssuccesssuccessvv")
 					toastr.success('Edition effectuée avec succes','Edition');
@@ -53,6 +53,7 @@
 					vm.headerDeLaPage = {
 						titre: vm.data.endroit.nom
 					};
+					$location.path('/endroits/'+data._id)
 				})
 				.error(function (data, status, header, config) {
 					console.log("erererere")
@@ -60,9 +61,32 @@
 				});
 		}
 
+		vm.supprimerEndroit=function(){
+
+			if(window.confirm('Etes-vous sur?')){
+				console.log('id de endroit: '+$routeParams.endroitid);
+
+				$http.delete('/api/endroits/'+$routeParams.endroitid, {headers: {	Authorization: 'Bearer '+ authentificationService.getToken()}}).then(
+					function(response){
+						toastr.success('Suppression effectuée avec succes','Suppression');
+						$location.path('/')
+
+					},
+					function(response){
+						console.log(response)
+						toastr.error(response.data.message, 'Erreur');
+					}
+				);
+
+			};
+
+
+		}
+
+
+
+
 
 	}
-
-
 })();
 

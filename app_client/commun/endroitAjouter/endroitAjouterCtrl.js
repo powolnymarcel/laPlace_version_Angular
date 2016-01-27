@@ -4,9 +4,9 @@
 		.controller('endroitAjouterCtrl', endroitAjouterCtrl);
 	//Le composant $uibModal vient de 'ui.bootstrap'
 	// Voir : modal - https://angular-ui.github.io/bootstrap/
-	endroitAjouterCtrl.$inject = ['$routeParams','laPlaceData','$http','toastr','authentificationService'];
+	endroitAjouterCtrl.$inject = ['$routeParams','$location','laPlaceData','$http','toastr','authentificationService'];
 
-	function endroitAjouterCtrl ($routeParams,laPlaceData,$http,toastr,authentificationService) {
+	function endroitAjouterCtrl ($routeParams,$location,laPlaceData,$http,toastr,authentificationService) {
 		var vm = this;
 
 		vm.ajouter=function(){
@@ -36,6 +36,7 @@
 					console.log("Ajout succes")
 					toastr.success('Ajout succes','Ajout');
 					console.log(response);
+					$location.path('/endroits/'+response.data._id);
 
 				},
 				function(response){
