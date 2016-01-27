@@ -15,7 +15,8 @@ var commentairesSchema = new mongoose.Schema({
 	auteur: {type: String, required: true},
 	note: {type: Number, required: true, min: 0, max: 5},
 	texte: {type: String, required: true},
-	temps: {type: Date, "default": Date.now}
+	temps: {type: Date, "default": Date.now},
+	auteur_id:{ type: mongoose.Schema.Types.ObjectId, ref: 'Utilisateur' }
 });
 
 var endroitSchema = new mongoose.Schema({

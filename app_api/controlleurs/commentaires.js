@@ -11,45 +11,110 @@ var sendJsonResponse = function(res, status, content) {
 	res.json(content);
 };
 
+
+
+
+//---------------------------------------------------------------
+/*                 Recuperation infos AUTEUR       		       */
+//---------------------------------------------------------------
+var Utilisateur = mongoose.model('Utilisateur');
+var recupAuteur = function(req, res, callback) {
+	//Si il y a un JWT et un payload email
+	if (req.payload && req.payload.email) {
+		//On cherche l'user via l'email
+		Utilisateur
+			.findOne({ email : req.payload.email })
+			.exec(function(err, utilisateur) {
+				if (!utilisateur) {
+					sendJSONresponse(res, 404, {
+						"message": "Utilisateur non trouvé"
+					});
+					return;
+				} else if (err) {
+					console.log(err);
+					sendJSONresponse(res, 404, err);
+					return;
+				}
+				//On retourne le nom de l'utilisateur
+				callback(req, res, utilisateur);
+			});
+	} else {
+		sendJSONresponse(res, 404, {
+			"message": "Utilisateur  trouvé!"
+		});
+		return;
+	}
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //---------------------------------------------------------------
 /*                  CREATION COMMENTAIRE (4 étapes)            */
 //---------------------------------------------------------------
 module.exports.creationCommentaire = function(req, res) {
-	var endroitsid = req.params.endroitsid;
-	if (endroitsid) {
-		Endroit
-			.findById(endroitsid)
-			.select('commentaires')
-			.exec(
-				function(err, endroits) {
-					if (err) {
-						sendJsonResponse(res, 400, err);
-					} else {
-						ajouterLeCommentaire(req, res, endroits);
-					}
-				}
-			);
-	} else {
-		sendJsonResponse(res, 404, {
-			"message": "Pas trouvé, id endroit requis"
-		});
-	}
+	//On recupere d'abord le nom de l'auteur via son JWT (voir fn recupAuteur)
+
+	recupAuteur(req, res, function (req, res, auteur) {
+		if(auteur.nom){
+			var endroitsid = req.params.endroitsid;
+			if (endroitsid) {
+				Endroit
+					.findById(endroitsid)
+					.select('commentaires')
+					.exec(
+						function(err, endroits) {
+							if (err) {
+								sendJsonResponse(res, 400, err);
+							} else {
+								ajouterLeCommentaire(req, res, endroits,auteur.nom,auteur._id);
+							}
+						}
+					);
+			} else {
+				sendJsonResponse(res, 404, {
+					"message": "Pas trouvé, id endroit requis"
+				});
+			}
+		}
+		else {
+			sendJsonResponse(res, 401, {
+				"message": "Login necessaire!"
+			});
+		}
+
+	})
 };
 
 //---------------------------------------------------------------
 /*                  CREATION COMMENTAIRE      +                */
 /*                  AJOUT DU COMMENTAIRE                       */
 //---------------------------------------------------------------
-var ajouterLeCommentaire = function(req, res, endroits) {
+var ajouterLeCommentaire = function(req, res, endroits,auteurNom,auteurID) {
 	if (!endroits) {
 		sendJsonResponse(res, 404, {
 			"message": "id de l'endroit non trouve"
 		});
 	} else {
+
 		endroits.commentaires.push({
-			auteur: req.body.auteur,
+			auteur:auteurNom,
 			note: req.body.note,
-			texte: req.body.texte
+			texte: req.body.texte,
+			auteur_id:auteurID
 		});
 		endroits.save(function(err, endroits) {
 			var ceCommentaire;
@@ -167,7 +232,8 @@ module.exports.commentaireUpdate = function(req, res) {
 		});
 		return;
 	}
-	Endroit
+
+		Endroit
 		.findById(req.params.endroitsid)
 		.select('commentaires')
 		.exec(
@@ -246,13 +312,24 @@ module.exports.commentaireDelete = function(req, res) {
 							"message": "ID commentaire non trouve"
 						});
 					} else {
-						endroits.commentaires.id(req.params.commentairesid).remove();
-						endroits.save(function(err) {
-							if (err) {
-								sendJsonResponse(res, 404, err);
-							} else {
-								mettreAjourNoteGlobaleEndroit(location._id);
-								sendJsonResponse(res, 204, null);
+
+						recupAuteur(req, res, function (req, res, auteur) {
+
+							var auteurIDDuComm = (endroits.commentaires.id(req.params.commentairesid).auteur_id).toString();
+							if(auteur._id == auteurIDDuComm){
+								endroits.commentaires.id(req.params.commentairesid).remove();
+								endroits.save(function(err) {
+									if (err) {
+										sendJsonResponse(res, 404, err);
+									} else {
+										mettreAjourNoteGlobaleEndroit(endroits._id);
+										sendJsonResponse(res, 204, null);
+									}
+								})
+							}
+							else{
+								console.log("pas DE TOI <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 ")
+								sendJsonResponse(res, 401, err);
 							}
 						});
 					}

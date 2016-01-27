@@ -2,9 +2,9 @@
 	angular
 		.module('laPlaceApp')
 		.controller('commentaireModalCtrl', commentaireModalCtrl);
-	//On injecte le resolve qui contien nom et ID et "laPlaceData" car le service a l'action "ajoutCommentaireParID"
-	commentaireModalCtrl.$inject = ['$uibModalInstance','endroitData','laPlaceData'];
-	function commentaireModalCtrl ($uibModalInstance,endroitData,laPlaceData) {
+	//On injecte le resolve qui contient nom et ID et "laPlaceData" car le service a l'action "ajoutCommentaireParID"
+	commentaireModalCtrl.$inject = ['$uibModalInstance','endroitData','laPlaceData','toastr'];
+	function commentaireModalCtrl ($uibModalInstance,endroitData,laPlaceData,toastr) {
 		var vm = this;
 		//Donc vm (viewmodel) endroitData qui vient du resolve du CTRL "endroitDetailsCtrl" contiendra "endroitData.endroitNom " et endroitData.endroitid
 		vm.endroitData=endroitData;
@@ -34,6 +34,8 @@
 				})
 				.error(function (data) {
 					vm.formError = "Commentaire non sauvé. erreur";
+					toastr.error('Commentaire non sauvé. erreur', 'Error');
+
 				});
 			return false;
 		};

@@ -1,3 +1,6 @@
+//Pour lire les *.env, là ou sont par exemple stockée les variables d'environements, ce fichier .env est à ajouter dans gitignore afin d'eviter de l'up sur github
+require('dotenv').load();
+
 //---------------------------------------------------------------
 /*           Structure de base generée avec EXPRESS            */
 //---------------------------------------------------------------
@@ -8,12 +11,16 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-//Config de la BDD
-require('./app_api/modeles/bdd');
 
 //Pour minifier le code
 var uglifyJs = require("uglify-js");
 var fs = require('fs');
+var passport = require('passport');
+
+
+//Config de la BDD
+require('./app_api/modeles/bdd');
+require('./app_api/config/passport');
 //**
 var port = process.env.PORT || 3000;
 var routes = require('./app_server/routes/index');
@@ -45,7 +52,8 @@ var appClientFiles = [
 	'app_client/commun/directives/navigation/navigation.directive.js',
 	'app_client/commun/vues/endroitDetail/endroitDetailsCtrl.js',
 	'app_client/commun/vues/commentaireModal/commentaireModalCtrl.js',
-	'app_client/commun/endroitEdit/endroitEditCtrl.js'
+	'app_client/commun/endroitEdit/endroitEditCtrl.js',
+	'app_client/commun/services/authentification.service.js'
 ];
 var uglified = uglifyJs.minify(appClientFiles, { compress : false });
 fs.writeFile('public/angular/laPlace.min.js', uglified.code, function (err){
@@ -67,10 +75,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client')));
 
+
+app.use(passport.initialize());
 //---------------------------------------------------------------
 /*                          Routes                             */
 //---------------------------------------------------------------
 //app.use('/', routes);
+
 app.use('/api', routesApi);
 app.use('/users', users);
 
@@ -84,7 +95,17 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handlers
+//---------------------------------------------------------------
+/*                     error handlers                          */
+//---------------------------------------------------------------
+// Catch unauthorised errors
+app.use(function (err, req, res, next) {
+	if (err.name === 'UnauthorizedError') {
+		res.status(401);
+		res.json({"message" : err.name + ": " + err.message});
+	}
+});
+
 
 // development error handler
 // will print stacktrace
