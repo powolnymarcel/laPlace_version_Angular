@@ -21,7 +21,7 @@
 				controllerAs: 'vm'
 			})
 			.when('/login', {
-				templateUrl: 'commun/authentification//login/login.view.html',
+				templateUrl: 'commun/authentification/login/login.view.html',
 				controller: 'loginCtrl',
 				controllerAs: 'vm'
 			})
