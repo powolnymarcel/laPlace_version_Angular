@@ -6,8 +6,8 @@ angular
 	.module('laPlaceApp')
 	.service('laPlaceData', laPlaceData);
 	//Injection pour eviter que lors de la minification le code ne se casse la figure
-	laPlaceData.$inject = ['$http'];
-function laPlaceData ($http) {
+	laPlaceData.$inject = ['$http','authentificationService'];
+function laPlaceData ($http,authentificationService) {
 	var locationByCoords = function (lat, lng) {
 		return $http.get('/api/endroits?lng=' + lng + '&lat=' + lat +
 			'&maxDistance=20000000');
@@ -19,7 +19,10 @@ function laPlaceData ($http) {
 
 	//Voir controlleur : "commentaireModalCtrl"
 	var ajoutCommentaireParID = function (endroitid, data) {
-		return $http.post('/api/endroits/' + endroitid + '/commentaires', data);
+		return $http.post('/api/endroits/' + endroitid + '/commentaires', data, {
+			headers: {			Authorization: 'Bearer '+ authentificationService.getToken()
+		}
+		});
 	};
 
 	return {

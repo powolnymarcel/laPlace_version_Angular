@@ -5,7 +5,8 @@
 	function navigation () {
 		return {
 			restrict: 'EA',
-			templateUrl: '/commun/directives/navigation/navigation.template.html'
+			templateUrl: '/commun/directives/navigation/navigation.template.html',
+			controller: 'navigationCtrl as navvm'
 		};
 	}
 })();

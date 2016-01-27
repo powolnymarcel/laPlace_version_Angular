@@ -1,0 +1,17 @@
+<navigation></navigation>
+
+<div class="col-md-6 col-sm-8">
+	<p class="lead">Pas encore membre? Veuillez vous <a href="/#enregistrement?page={{vm.retourAlaPagePrecedente }}">enregistrer</a> d'abord.</p>
+	<form ng-submit="vm.envoyerLeFormulaireEnregistrement()">
+		<div role="alert" ng-show="vm.erreursDansLeFormulaire" class="alert alert-danger">{{vm.erreursDansLeFormulaire }}</div>
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input type="email" class="form-control" id="email" placeholder="Votre email" ng-model="vm.informations.email">
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.informations.password">
+		</div>
+		<button type="submit" class="btn btn-default">Connexion!</button>
+	</form>
+</div>

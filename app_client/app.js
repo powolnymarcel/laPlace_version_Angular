@@ -15,6 +15,16 @@
 				controller: 'aProposCtrl',
 				controllerAs: 'vm'
 			})
+			.when('/enregistrement', {
+				templateUrl: 'commun/authentification/enregistrement/enregistrement.view.html',
+				controller: 'enregistrementCtrl',
+				controllerAs: 'vm'
+			})
+			.when('/login', {
+				templateUrl: 'commun/authentification/login/login.view.html',
+				controller: 'loginCtrl',
+				controllerAs: 'vm'
+			})
 			.when('/endroits/:endroitid', {
 				templateUrl: 'commun/vues/endroitDetail/endroitDetails.vue.html',
 				controller: 'endroitDetailsCtrl',

@@ -4,8 +4,8 @@
 		.service('authentificationService', authentificationService);
 
 	//Service pour la gestion du token dans la SPA
-	authentificationService.$inject = ['$window'];
-	function authentificationService ($window) {
+	authentificationService.$inject = ['$http','$window'];
+	function authentificationService ($http,$window) {
 
 		//Permet de sauvegarder le Token en localStorage
 		var saveToken = function (token) {

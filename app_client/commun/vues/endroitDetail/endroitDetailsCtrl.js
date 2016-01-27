@@ -4,12 +4,13 @@
 		.controller('endroitDetailsCtrl', endroitDetailsCtrl);
 	//Le composant $uibModal vient de 'ui.bootstrap'
 	// Voir : modal - https://angular-ui.github.io/bootstrap/
-	endroitDetailsCtrl.$inject = ['$routeParams','$uibModal','laPlaceData'];
+	endroitDetailsCtrl.$inject = ['$routeParams','$location','$uibModal','laPlaceData','authentificationService'];
 
-	function endroitDetailsCtrl ($routeParams,$uibModal,laPlaceData) {
+	function endroitDetailsCtrl ($routeParams,$location,$uibModal,laPlaceData,authentificationService) {
 		var vm = this;
 		vm.endroitid = $routeParams.endroitid;
-
+		vm.estLoggeDansLapp = authentificationService.estLoggeDansLapp();
+		vm.lePathCourrant = $location.path();
 
 
 		laPlaceData.endroitParid(vm.endroitid)

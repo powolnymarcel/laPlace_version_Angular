@@ -12,7 +12,7 @@
 		//  ng-submit DU FORMULAIRE
 		vm.envoyerFormulaire = function () {
 			vm.formErreur = "";
-			if(!vm.formData.nom || !vm.formData.note || !vm.formData.texte) {
+			if(!vm.formData.note || !vm.formData.texte) {
 				vm.formErreur = "Tous les champs sont requis.";
 				return false;
 			} else {
@@ -23,7 +23,6 @@
 		vm.ajoutCommentaireParID = function (endroitid, formData) {
 			//Fait un POST gràce au service laPlaceData et à l'action ajoutCommentaireParID
 			laPlaceData.ajoutCommentaireParID(endroitid, {
-					auteur : formData.nom,
 					note : formData.note,
 					texte : formData.texte
 				})
