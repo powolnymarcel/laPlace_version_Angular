@@ -264,7 +264,7 @@ module.exports.endroitsUpdate = function(req, res) {
 					sendJsonResponse(res, 400, err);
 					return;
 				}
-				console.log('ENDROIT TROUVE, pret pour l\'update de:  '+req.params.endroitsid)
+				console.log('ENDROIT TROUVE, pret pour l\'update de:  '+req.params.endroitsid);
 
 				endroits.nom = req.body.nom;
 				endroits.adresse = req.body.adresse;

@@ -13,7 +13,7 @@
 		vm.envoyerFormulaire = function () {
 			vm.formErreur = "";				console.log('arret ici')
 
-			if(!vm.formData.note || !vm.formData.texte) {
+			if(! vm.formData || !vm.formData.note || !vm.formData.texte) {
 				vm.formErreur = "Tous les champs sont requis.";
 				return false;
 			} else {

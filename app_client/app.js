@@ -95,7 +95,7 @@
 				if (next && next.$$route && next.$$route.secure) {
 
 					if(authentificationService.estLoggeDansLapp() && authentificationService.utilisateurEnCours().admin ===true){
-						console.log("c'est l'admin !!")
+						console.log("Bienvenue Admin, loggin effectué avec SUCCESS !")
 					}
 					else{
 							$rootScope.$evalAsync(function () {
